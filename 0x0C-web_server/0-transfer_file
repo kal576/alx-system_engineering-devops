@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env bash
 # This is a bash script that transfers a file from a client to a server using scp
 
@@ -7,4 +8,20 @@ elif [ "$#" -lt 4 ]; then
 	scp -o StrictHostKeyChecking=no "$1" "$3@$2":~/
 else
 	scp -i "$4" -o StrictHostKeyChecking=no "$1" "$3@$2":~/
+=======
+#!/bin/bash
+# Check if less than 3 parameters are provided (should be 4)
+if [ "$#" -lt 3 ]; then
+    echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+    exit 1
+>>>>>>> a92976a02d1dcbc8be900378d51fd55833478ea6
 fi
+
+# Assign parameters
+PATH_TO_FILE="$1"
+IP="$2"
+USERNAME="$3"
+SSH_KEY="$4"
+
+# Use scp to transfer the file
+scp -i "$SSH_KEY" -o StrictHostKeyChecking=no "$PATH_TO_FILE" "${USERNAME}@${IP}:~/"
